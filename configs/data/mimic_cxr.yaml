@@ -1,0 +1,23 @@
+root_dir: data
+csv_path: data/mimic-cxr.csv
+
+label_columns:
+  - Atelectasis
+  - Cardiomegaly
+  - Consolidation
+  - Edema
+  - Enlarged Cardiomediastinum
+  - Lung Lesion
+  - Lung Opacity
+  - Normal
+  - Pleural Effusion
+  - Pneumonia
+  - Pneumothorax
+
+transforms:
+  image_size: 200  # 128 
+
+dataloader:
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true

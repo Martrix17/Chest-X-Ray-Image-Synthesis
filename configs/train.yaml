@@ -1,0 +1,33 @@
+defaults:
+  - _self_
+  - model: unet
+  - train: default
+  - data: mimic_cxr
+
+date: ${now:%Y-%m-%d}
+time: ${now:%H-%M-%S}
+
+# Final model saving
+final:
+  path: models/${date}/${time}
+
+# Checkpoint saving and loading
+checkpoint:
+  save_steps: 5000
+  path: checkpoints/${date}/${time}
+  sort_by: "fd_dino"  # Options: "val_loss", "fd_dino", "fd_inception", "lpips_diversity"
+  keep_top_k: 5
+  resume_from: null
+
+# MLflow settings
+mlflow:
+  experiment_name: mimic-cxr diffusion
+  tracking_uri: "file:./mlruns"
+  run_name: train_${date}_${time}
+
+# Hydra settings
+hydra:
+  run:
+    dir: outputs/${date}/${time}
+  sweep:
+    dir: multirun/${date}/${time}
