@@ -1,0 +1,36 @@
+{
+  "name": "Diffusion Image Synthesis",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": [
+    "--gpus=all",
+    "--shm-size=8g"
+  ],
+  "containerEnv": {
+    "PYTHONPATH": "${containerWorkspaceFolder}:${containerWorkspaceFolder}/src"
+  },
+  "postCreateCommand": "pre-commit install",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "explicit",
+          "source.fixAll.ruff": "explicit"
+        },
+        "python.analysis.extraPaths": [
+          "src"
+        ],
+        "jupyter.jupyterServerType": "local"
+      },
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff"
+      ]
+    }
+  },
+  "remoteUser": "developer"
+}

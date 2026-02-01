@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "image-synthesis-diffusion"
+version = "0.1.0"
+description = "Diffusion models for medical image synthesis"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Martrix17" }]
+dependencies = [
+  # Core DL
+  "torch",
+  "torchvision",
+  "torchmetrics",
+  "torchmetrics[image]",
+
+  # Diffusion / HF
+  "diffusers",
+  "transformers",
+  "accelerate",
+
+  # Data & images
+  "numpy",
+  "pandas",
+  "Pillow",
+  "opencv-python-headless",
+
+  # Experiment management
+  "hydra-core",
+  "omegaconf",
+  "mlflow",
+  "tqdm",
+
+  # Evaluation & plotting
+  "scikit-learn",
+  "matplotlib",
+  "seaborn",
+
+  # System / hardware
+  "nvidia-ml-py",
+  "psutil",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff",
+  "pre-commit",
+  "pytest",
+  "mypy",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I"]
+fix = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
