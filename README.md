@@ -295,7 +295,7 @@ Note: Deprecated for local file tracking.
 
 Shown results were generated from models trained on a fraction of the dataset. A local GPU (8 GB VRAM), limiting the image size to 200 x 200, with a batch size of 12, in order to cut overall training time.
 
-![grid:image](results/test/2026-02-01/01-57-39/grid.jpg "Generated images from testing set")
+![grid:image](results/test/grid.jpg "Generated images from testing set")
 
 The metrics results have to be viewed cautiously as only 256 images and their labels were used from the test loader to generate and compare them.
 
