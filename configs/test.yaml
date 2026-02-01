@@ -1,0 +1,28 @@
+defaults:
+  - _self_
+  - model: unet
+  - data: mimic_cxr
+  - test: default
+
+date: ${now:%Y-%m-%d}
+time: ${now:%H-%M-%S}
+
+# Model loading settings
+final:
+  path: models/2026-01-13/18-26-35  # null
+
+results:
+  path: results/test/${date}/${time}
+
+# MLflow settings
+mlflow:
+  experiment_name: mimic-cxr diffusion
+  tracking_uri: "file:./mlruns"
+  run_name: test_${date}_${time}
+
+# Hydra settings
+hydra:
+  run:
+    dir: outputs/${date}/${time}
+  sweep:
+    dir: multirun/${date}/${time}

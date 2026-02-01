@@ -1,0 +1,27 @@
+testing:
+  batch_size: 8
+
+  max_grad_norm: 1.0
+  seed: 42
+
+  mixed_precision: "fp16"
+
+ema:
+  enabled: true
+  ema_decay: 0.9999
+
+cfg:
+  guidance_scale: 7.5
+
+generation:
+  max_samples: 256
+  num_save_image: 16
+
+metrics:
+  fd:
+    dino: true
+    inception: true
+    num_samples: 256
+  lpips:
+    diversity: true
+    max_pairs: 512
