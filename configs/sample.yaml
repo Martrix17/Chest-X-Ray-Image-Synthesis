@@ -1,0 +1,29 @@
+defaults:
+  - _self_
+  - data: mimic_cxr
+  - model: unet
+
+date: ${now:%Y-%m-%d}
+time: ${now:%H-%M-%S}
+
+# Model loading settings
+final:
+  path: null
+
+results:
+  path: results/inference/${date}/${time}
+
+sample:
+  mixed_precision: "fp16"
+
+ema:
+  enabled: true
+  ema_decay: 0.9999
+  
+cfg:
+  guidance_scale: 7.5  # For sample generation
+
+generation:
+  num_inference_steps: 50
+  sample_labels: # Classes to include in sample
+    - [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
